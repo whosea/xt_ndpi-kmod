@@ -1,9 +1,10 @@
 # Define the kmod package name here.
 %define kmod_name xt_ndpi
-%define ndpi_git_ver 96cf7764577603f1bd2896d414532afe625f6667
+#%define ndpi_git_ver 96cf7764577603f1bd2896d414532afe625f6667
+%define ndpi_git_ver flow_info-4
 
 # If kversion isn't defined on the rpmbuild line, define it here.
-%{!?kversion: %define kversion 3.10.0-1160.6.1.el7.%{_target_cpu}}
+%{!?kversion: %define kversion 3.10.0-1160.49.1.el7.%{_target_cpu}}
 
 Name:    %{kmod_name}-kmod
 Version: 2.8.2
@@ -14,17 +15,18 @@ Summary: %{kmod_name} kernel module(s)
 URL:     http://www.kernel.org/
 
 BuildRequires: redhat-rpm-config, perl, kernel-devel, gcc, iptables-devel, libpcap-devel, autoconf, automake, libtool
-BuildRequires: kernel = 3.10.0-1160.6.1.el7, kernel-devel = 3.10.0-1160.6.1.el7
+BuildRequires: kernel = 3.10.0-1160.49.1.el7, kernel-devel = 3.10.0-1160.49.1.el7
 Requires: kernel >= 3.10.0-1160.6.1
 ExclusiveArch: x86_64
 
 # Sources.
-Source0: https://github.com/vel21ripn/nDPI/archive/%{ndpi_git_ver}.tar.gz
+#Source0: https://github.com/vel21ripn/nDPI/archive/%{ndpi_git_ver}.tar.gz
+Source0: https://github.com/vel21ripn/nDPI/archive/refs/heads/%{ndpi_git_ver}.zip
 Source5:  GPL-v2.0.txt
 Source10: kmodtool-%{kmod_name}-el7.sh
-Patch1: ndpi-netfilter_rhel7.5.patch
-Patch2: ndpi-netfilter_nethserver_id.patch
-Patch3: ndpi-netfilter_rhel7.6.patch
+#Patch1: ndpi-netfilter_rhel7.5.patch
+#Patch2: ndpi-netfilter_nethserver_id.patch
+#Patch3: ndpi-netfilter_rhel7.6.patch
 
 # Magic hidden here.
 %{expand:%(sh %{SOURCE10} rpmtemplate %{kmod_name} %{kversion} "")}
@@ -39,9 +41,9 @@ of the same variant of the Linux kernel and not on any one specific build.
 
 %prep
 %setup -q -n nDPI-%{ndpi_git_ver}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+#%patch1 -p1
+#%patch2 -p1
+#%patch3 -p1
 ./autogen.sh
 ( cd src/lib ; make ndpi_network_list.c.inc )
 cd ndpi-netfilter
