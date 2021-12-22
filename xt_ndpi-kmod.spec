@@ -14,8 +14,9 @@ License: GPLv2
 Summary: %{kmod_name} kernel module(s)
 URL:     http://www.kernel.org/
 
+#sudo apt-get install build-essential bison flex libpcap-dev libtool-bin autoconf pkg-config libjson-c-dev libnuma-dev libgcrypt20-dev libpcre2-dev
 
-BuildRequires: redhat-rpm-config, perl, kernel-devel, gcc, iptables-devel, libpcap-devel, autogen, autoconf, automake, libtool
+BuildRequires: redhat-rpm-config, perl, kernel-devel, gcc, iptables-devel, libpcap-devel, autogen, autoconf, automake, libtool, flex, bison
 BuildRequires: kernel = 3.10.0-1160.49.1.el7, kernel-devel = 3.10.0-1160.49.1.el7
 Requires: kernel >= 3.10.0-1160.6.1
 ExclusiveArch: x86_64
