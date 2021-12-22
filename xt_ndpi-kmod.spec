@@ -14,7 +14,8 @@ License: GPLv2
 Summary: %{kmod_name} kernel module(s)
 URL:     http://www.kernel.org/
 
-BuildRequires: redhat-rpm-config, perl, kernel-devel, gcc, iptables-devel, libpcap-devel, autoconf, automake, libtool
+
+BuildRequires: redhat-rpm-config, perl, kernel-devel, gcc, iptables-devel, libpcap-devel, autogen, autoconf, automake, libtool
 BuildRequires: kernel = 3.10.0-1160.49.1.el7, kernel-devel = 3.10.0-1160.49.1.el7
 Requires: kernel >= 3.10.0-1160.6.1
 ExclusiveArch: x86_64
